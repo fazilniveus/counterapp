@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: App
+ name: app
  labels:
-  app: App
+  app: app
 spec:
  replicas: 1
  selector:
   matchLabels:
-   app: App
+   app: app
  template:
   metadata: 
    labels:
-    app: App
+    app: app
   spec:
    containers:
-   - name: App
+   - name: app
      image: fazilniveus/counter:tagversion
      ports:
      - containerPort: 5002
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: App
+  name: app
 spec:
   type: LoadBalancer
   selector:
-    app: App
+    app: app
   ports:
     - protocol: TCP
       port: 5002
