@@ -17,7 +17,7 @@ spec:
   spec:
    containers:
    - name: myapp
-     image: image: fazilniveus/counter:tagversion
+     image: fazilniveus/counter:tagversion
      ports:
      - containerPort: 5002
 
