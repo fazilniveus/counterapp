@@ -16,7 +16,7 @@ spec:
         app: app
     spec:
       containers:
-      - image: gcr.io/notional-radio-240808/frontend-micro:latest
+      - image: fazilniveus/counter:tagversion
         name: app
         imagePullPolicy: Always
         ports:
@@ -27,7 +27,7 @@ kind: Service
 metadata:
   name: app
   annotations:
-    traffic.sidecar.istio.io/excludeOutboundIPRanges: 0.0.0.0/0
+    cloud.google.com/neg: '{"exposed_ports": {"5002":{}}}'
   labels:
     app: app
 spec:
