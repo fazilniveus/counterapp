@@ -2,38 +2,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+ name: myapp
+ labels:
+  app: myapp
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: app
-  template:
-    metadata:
-      annotations:
-        traffic.sidecar.istio.io/excludeOutboundIPRanges: 0.0.0.0/0
-      labels:
-        app: app
-    spec:
-      containers:
-      - image: fazilniveus/counter:tagversion
-        name: app
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5002
+ replicas: 1
+ selector:
+  matchLabels:
+   app: myapp
+ template:
+  metadata: 
+   labels:
+    app: myapp
+  spec:
+   containers:
+   - name: myapp
+     image: image: fazilniveus/counter:tagversion
+     ports:
+     - containerPort: 5002
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: app
-  annotations:
-    cloud.google.com/neg: '{"exposed_ports": {"5002":{}}}'
-  labels:
-    app: app
+  name: myapp
 spec:
+  type: LoadBalancer
   selector:
-    app: app
-  type: NodePort
+    app: myapp
   ports:
-  - port: 5002
-    protocol: TCP
+    - protocol: TCP
+      port: 50
+      targetPort: 5002
