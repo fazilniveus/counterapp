@@ -10,8 +10,7 @@ WORKDIR /app
 # Install Node.js dependencies defined in '/app/packages.json'
 RUN npm install
 
-
-COPY --from=builder /app /app
+COPY ./ /app/
 WORKDIR /app
 ENV PORT 5002
 EXPOSE 5002
