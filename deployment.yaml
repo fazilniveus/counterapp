@@ -15,7 +15,6 @@ spec:
    labels:
     app: myapp
   spec:
-   hostNetwork: true
    containers:
    - name: myapp
      image: fazilniveus/counter:tagversion
