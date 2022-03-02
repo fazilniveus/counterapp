@@ -15,8 +15,6 @@ spec:
    labels:
     app: myapp
   spec:
-   Plugins:
-    Network: bridge null host
    containers:
    - name: myapp
      image: fazilniveus/counter:tagversion
